@@ -90,12 +90,12 @@ import java.util.Set;
 	    		count += tmp.length;
 	    	}
 	    	if(result.isEmpty()) {
-	    		System.out.println(input[i] + "cannot be split into aiW words");
+	    		System.out.println(input[i] + " cannot be split into aiW words");
 	    	}
-	    	else if (result.size() == 2 )
-	    		System.out.println(input[i] + " can be split 2 different ways: " + result);
+	    	else if (result.size() >= 2 )
+	    		System.out.println(input[i] + " can be split in different ways: " + result);
 	    	else {
-	    		System.out.println(input[i] + "can be split into " + count + " aiW word[s]: " + result);
+	    		System.out.println(input[i] + " can be split into " + count + " aiW word[s]: " + result);
 	    	}
 	    	count = 0;
 	    }
