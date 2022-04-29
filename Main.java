@@ -1,15 +1,30 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.nio.file.*;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 	 
 	public class Main {
 	   
-	  public static String readFileAsString(String fileName)throws Exception
+	  public static String[] readFileAsString(String fileName)throws Exception
 	  {
-	    String data = "";
-	    data = new String(Files.readAllBytes(Paths.get(fileName)));
-	    return data;
+	    BufferedReader br = new BufferedReader(new FileReader(fileName));
+	    List<String> listofStrings = new ArrayList<String>();
+	    String line = br.readLine();
+	    
+	    while(line != null) {
+	    	listofStrings.add(line);
+	    	line = br.readLine();
+	    }
+	    br.close();
+	    String[] array = listofStrings.toArray(new String[0]);
+	    return array;
+	    
 	  }
 	  public static String readOutputFileasString(String fileName)throws Exception
 	  {
@@ -20,6 +35,7 @@ import java.util.List;
 	  
 	  public static List<String> wordBreak(String s, List<String> dictionary) {
 		    
+		  
 	        List<String> afterBreak = new ArrayList();
 	        if (dictionary.contains(s))
 	        	afterBreak.add(s);
@@ -29,20 +45,23 @@ import java.util.List;
 	        		List <String> subList = wordBreak(s.substring(i), dictionary);
 	        		for (String word: subList) {
 	        			afterBreak.add( left + " "+ word);
+	        			
 	        		}
 	        	}
 	        }
+	        
 	        
 	        return afterBreak;
 	        
 	    }
 	  public static void main(String[] args) throws Exception
 	  {
-	    String data = readFileAsString("/Users/diembui/eclipse-workspace/Project3-AOA/src/input.txt");
-	    String dic = readOutputFileasString("/Users/diembui/eclipse-workspace/Project3-AOA/src/aliceInWonderlandDictionary.txt");
-	    String [] input= data.split("\n");
-	   
+	    String[] input = readFileAsString("input.txt");
+	    String dic = readOutputFileasString("aliceInWonderlandDictionary.txt");
+	    
+	    //String input [] = data.split("\n");
 	    String dictionary [] = dic.split("\n");
+	    
 	    List<String> dict = new ArrayList<>();
 	    for (String s : dictionary) {
 	    	dict.add(s);
@@ -59,7 +78,26 @@ import java.util.List;
 	    	//System.out.println(input[i] + "can be split into " + result);
 	    	
 	    }*/
-	    result = wordBreak("williamwillwritewonderfulwalrus", dict);
-	    System.out.println(result);
+	    int count = 0;
+	  
+	    for(int i = 0; i < input.length; i++) {
+	    	//input = input.replace("\n", "");
+	    	//System.out.println(input[i]);
+	    	//System.out.println(dictionary[i]);
+	    	result = wordBreak(input[i], dict);
+	    	for (String line : result) {
+	    		String[] tmp = line.split("\\s+");
+	    		count += tmp.length;
+	    	}
+	    	if(result.isEmpty()) {
+	    		System.out.println(input[i] + "cannot be split into aiW words");
+	    	}
+	    	else {
+	    		System.out.println(input[i] + "can be split into " + count + " aiW word[s]: " + result);
+	    	}
+	    	count = 0;
+	    }
+	    //System.out.println(dictionary[1]);
+	    //System.out.println("hello");
 	  }
 }
