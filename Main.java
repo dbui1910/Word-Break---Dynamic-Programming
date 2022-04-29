@@ -45,8 +45,8 @@ public class Main {
   }
   public static void main(String[] args) throws Exception
   {
-    String data = readFileAsString("/Users/diembui/eclipse-workspace/Project3-AOA/src/input.txt");
-    String dic = readOutputFileasString("/Users/diembui/eclipse-workspace/Project3-AOA/src/aliceInWonderlandDictionary.txt");
+    String data = readFileAsString("input.txt");
+    String dic = readOutputFileasString("aliceInWonderlandDictionary.txt");
     
     String dictionary [] = dic.split("\n");
     /*for (int i = 0; i < dictionary.length; i++) {
