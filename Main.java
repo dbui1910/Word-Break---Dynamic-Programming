@@ -67,23 +67,11 @@ import java.util.Set;
 	    	dict.add(s);
 	    }
 	    List<String> result= new ArrayList<String>();
-	    // I TRIED TO TAKE INPUT.TXT AND PRINT OUT ALL THE OUTPUTS BUT I GOT EMPTY STRINGS EXCEPT "TOUNGESTOES"
-	    /*for (String y : input) {
-	    	//System.out.println(y);
-	    	result = wordBreak(y, dict);
-	    	//System.out.println(y + "can be split into " + result);
-	    }
-	    for ( int i=0; i< input.length; i++) {
-	    	//result = wordBreak(input[i], dict);
-	    	//System.out.println(input[i] + "can be split into " + result);
-	    	
-	    }*/
+	    
 	    int count = 0;
 	  
 	    for(int i = 0; i < input.length; i++) {
-	    	//input = input.replace("\n", "");
-	    	//System.out.println(input[i]);
-	    	//System.out.println(dictionary[i]);
+	    	
 	    	result = wordBreak(input[i], dict);
 	    	for (String line : result) {
 	    		String[] tmp = line.split("\\s+");
@@ -99,7 +87,6 @@ import java.util.Set;
 	    	}
 	    	count = 0;
 	    }
-	    //System.out.println(dictionary[1]);
-	    //System.out.println("hello");
+	   
 	  }
 }
