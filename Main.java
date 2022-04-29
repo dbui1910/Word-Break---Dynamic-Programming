@@ -44,7 +44,7 @@ import java.util.Set;
 	        	if (dictionary.contains(left)) {
 	        		List <String> subList = wordBreak(s.substring(i), dictionary);
 	        		for (String word: subList) {
-	        			afterBreak.add( left + " "+ word);
+	        			afterBreak.add(left + " "+ word);
 	        			
 	        		}
 	        	}
@@ -59,7 +59,7 @@ import java.util.Set;
 	    String[] input = readFileAsString("input.txt");
 	    String dic = readOutputFileasString("aliceInWonderlandDictionary.txt");
 	    
-	    //String input [] = data.split("\n");
+	    
 	    String dictionary [] = dic.split("\n");
 	    
 	    List<String> dict = new ArrayList<>();
@@ -92,6 +92,8 @@ import java.util.Set;
 	    	if(result.isEmpty()) {
 	    		System.out.println(input[i] + "cannot be split into aiW words");
 	    	}
+	    	else if (result.size() == 2 )
+	    		System.out.println(input[i] + " can be split 2 different ways: " + result);
 	    	else {
 	    		System.out.println(input[i] + "can be split into " + count + " aiW word[s]: " + result);
 	    	}
